@@ -12,7 +12,7 @@ Vagrant.configure(2) do |config|
 
     # Every Vagrant development environment requires a box. You can search for
     # boxes at https://atlas.hashicorp.com/search.
-    config.vm.box = "ubuntu/wily64"
+    config.vm.box = "ubuntu/trusty64"
 
     config.ssh.forward_x11 = true
     config.ssh.forward_agent = true
@@ -63,8 +63,8 @@ Vagrant.configure(2) do |config|
         # set the number of cpus
         vb.cpus = "2"
         # Enable usb for opencv (requires "Oracle VM VirtualBox Extension Pack" for VB users)
-        vb.customize ["modifyvm", :id, "--usb", "on"]
-        vb.customize ["modifyvm", :id, "--usbehci", "on"]
+        vb.customize ["modifyvm", :id, "--usb", "off"]
+        vb.customize ["modifyvm", :id, "--usbehci", "off"]
     end
 
     # View the documentation for the provider you are using for more
@@ -112,7 +112,7 @@ Vagrant.configure(2) do |config|
     echo "Host localhost\n    UserKnownHostsFile=/dev/null\n    StrictHostKeyChecking=no" >> /root/.ssh/config
 
     echo "hadoop downloading and installing"
-    wget --quiet http://ftp.heanet.ie/mirrors/www.apache.org/dist/hadoop/common/stable/hadoop-2.7.2.tar.gz
+    wget --quiet http://ftp.heanet.ie/mirrors/www.apache.org/dist/hadoop/common/stable/hadoop-2.7.3.tar.gz
     tar xzf hadoop-2.7.2.tar.gz
     mv hadoop-2.7.2 /usr/local/hadoop
     chmod -R 777 /usr/local/hadoop
@@ -120,13 +120,13 @@ Vagrant.configure(2) do |config|
     echo "\n\n export JAVA_HOME=/usr/lib/jvm/java-8-oracle/jre/" >> /usr/local/hadoop/etc/hadoop/hadoop-env.sh
     
     echo "hive downloading and installing"
-    wget --quiet http://ftp.heanet.ie/mirrors/www.apache.org/dist/hive/hive-2.0.0/apache-hive-2.0.0-bin.tar.gz
+    wget --quiet http://ftp.heanet.ie/mirrors/www.apache.org/dist/hive/hive-2.0.1/apache-hive-2.0.1-bin.tar.gz
     tar xzf apache-hive-2.0.0-bin.tar.gz
     mv apache-hive-2.0.0-bin /usr/local/hive
     chmod -R 777 /usr/local/hive
     
     echo "pig downloading and installing"
-    wget --quiet http://ftp.heanet.ie/mirrors/www.apache.org/dist/pig/latest/pig-0.15.0.tar.gz
+    wget --quiet http://ftp.heanet.ie/mirrors/www.apache.org/dist/pig/latest/pig-0.16.0.tar.gz
     tar xzf pig-0.15.0.tar.gz
     mv pig-0.15.0 /usr/local/pig
     chmod -R 777 /usr/local/pig
@@ -137,11 +137,11 @@ Vagrant.configure(2) do |config|
     /usr/local/hadoop/bin/hadoop fs -mkdir /user/hive/warehouse
     chmod -R 777 /user/hive 
 
-    echo "brewing up a storm"
-    wget --quiet http://mirrors.whoishostingthis.com/apache/storm/apache-storm-0.10.0/apache-storm-0.10.0.tar.gz
-    tar zxf apache-storm-0.10.0.tar.gz
-    mv apache-storm-0.10.0 /usr/local/storm
-    chmod -R 777 /usr/local/storm
+    #echo "brewing up a storm"
+    #wget --quiet http://mirrors.whoishostingthis.com/apache/storm/apache-storm-0.10.0/apache-#storm-0.10.0.tar.gz
+    #tar zxf apache-storm-0.10.0.tar.gz
+    #mv apache-storm-0.10.0 /usr/local/storm
+    #chmod -R 777 /usr/local/storm
     
     SHELL
 
