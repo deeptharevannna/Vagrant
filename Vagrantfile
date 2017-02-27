@@ -59,7 +59,7 @@ Vagrant.configure(2) do |config|
         # vb.gui = true
 
         # Customize the amount of memory on the VM:
-        vb.memory = "8192"
+        vb.memory = "2048"
         # set the number of cpus
         vb.cpus = "2"
         # Enable usb for opencv (requires "Oracle VM VirtualBox Extension Pack" for VB users)
@@ -113,22 +113,22 @@ Vagrant.configure(2) do |config|
 
     echo "hadoop downloading and installing"
     wget --quiet http://ftp.heanet.ie/mirrors/www.apache.org/dist/hadoop/common/stable/hadoop-2.7.3.tar.gz
-    tar xzf hadoop-2.7.2.tar.gz
-    mv hadoop-2.7.2 /usr/local/hadoop
+    tar xzf hadoop-2.7.3.tar.gz
+    mv hadoop-2.7.3 /usr/local/hadoop
     chmod -R 777 /usr/local/hadoop
 
     echo "\n\n export JAVA_HOME=/usr/lib/jvm/java-8-oracle/jre/" >> /usr/local/hadoop/etc/hadoop/hadoop-env.sh
     
     echo "hive downloading and installing"
     wget --quiet http://ftp.heanet.ie/mirrors/www.apache.org/dist/hive/hive-2.0.1/apache-hive-2.0.1-bin.tar.gz
-    tar xzf apache-hive-2.0.0-bin.tar.gz
-    mv apache-hive-2.0.0-bin /usr/local/hive
+    tar xzf apache-hive-2.0.1-bin.tar.gz
+    mv apache-hive-2.0.1-bin /usr/local/hive
     chmod -R 777 /usr/local/hive
     
     echo "pig downloading and installing"
     wget --quiet http://ftp.heanet.ie/mirrors/www.apache.org/dist/pig/latest/pig-0.16.0.tar.gz
-    tar xzf pig-0.15.0.tar.gz
-    mv pig-0.15.0 /usr/local/pig
+    tar xzf pig-0.16.0.tar.gz
+    mv pig-0.16.0 /usr/local/pig
     chmod -R 777 /usr/local/pig
 
     mkdir -p /user/hive
